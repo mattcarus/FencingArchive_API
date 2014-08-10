@@ -1,0 +1,52 @@
+<?php
+/*	FencingArchive.net API Client Class
+ *
+ *	Version 0.1b
+ */
+
+class Club {
+	public $club_id = '';
+	public $club_name = '';
+	public $club_fencers = array();
+
+	function __construct($id)
+	{
+		$this->Club($id);
+	}
+	
+	function Club($id)
+	{
+		$db = new Database();
+		$results = $db->query("SELECT `name` FROM `clubs` WHERE `id`='$id'");
+		
+		$row = mysql_fetch_assoc($results);
+		$this->club_name = $row['name'];
+		$this->club_id = $id;
+		$this->club_fencers = $this->getFencers();
+	}
+	
+	public function getName()
+	{
+		return $this->club_name . " Fencing Club";
+	}
+	
+	public function getLink()
+	{
+		return "<a href=\"" . BASE_URL . "/club.php?id=" . urlencode($this->club_id) . "\">" . $this->club_name . "</a>";
+	}
+	
+	public function getFencers()
+	{
+		$db = new Database();
+		$results = $db->query("SELECT `id` FROM `fencers` WHERE `club_id` LIKE '%" . $this->club_id . "%';");
+
+		$club_fencers = array();
+		while ( $row = mysql_fetch_assoc($results) )
+		{
+			$fencer = new Fencer($row['id']);
+			array_push($club_fencers, array("name" => $fencer->getLink()));
+		}
+		return $club_fencers;
+	}
+}
+

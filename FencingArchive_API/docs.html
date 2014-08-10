@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>FencingArchive.net API</title>
+<style>
+h1 {  }
+h2 { margin-left: 1em; }
+p  { margin-left: 2em; }
+ul { margin-left: 3em; }
+</style>
+</head>
+<body>
+	<h1>FencingArchive.net API</h1>
+		<h2>/</h2>
+		<h2>/twitter/status</h2>
+			<p>Latest Twitter status messages</p>
+			<p>Example: <a href="/twitter/status">/twitter/status</a></p>
+		<h2>/twitter/profile</h2>
+			<p>@backonthepiste Twitter profile</p>
+			<p>Example: <a href="/twitter/profile">/twitter/profile</a></p>
+		<h2>/fencer/:id</h2>
+			<p>Get the fencer object with id :id</p>
+			<p>Example: <a href="/fencer/123">/fencer/123</a></p>
+		<h2>/competition/:id</h2>
+			<p>Get the competition object with id :id</p>
+			<p>Example: <a href="/competition/123">/competition/123</a></p>
+		<h2>/club/:id</h2>
+			<p>Get the club object with id :id</p>
+			<p>Example: <a href="/club/123">/club/123</a></p>
+		<h2>/series/:id</h2>
+			<p>Get the series object with id :id</p>
+			<p>Example: <a href="/series/123">/series/123</a></p>
+		<h2>/query/:queryName/:options</h2>
+			<p>Run the query named :queryName with the option :option
+			  <ul>
+			    <li>lastNCompetitionLinks - Return links to the last n competitions. Option value is the number of links to return</li>
+			    <li>recentSeries - return the most recent series</li>
+			  </ul>
+			</p>
+			<p>Example: <a href="/lastNCompetitionLinks/3">/lastNCompetitionLinks/3</a></p>
+		<h2>/search/term</h2>
+			<p>Passthrough node to elastic search instance at <a href="http://api.fencingarchive.net:9200/">http://api.fencingarchive.net:9200/</a>. Note that these results are currently returned as JSON (most other things are XML).</p>
+			<p>Example: <a href="/search/bob">/search/bob</a></p>
+</body>
+</html>

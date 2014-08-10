@@ -1,0 +1,3212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Slim.html">\Slim</a></li>
+                                                        <li><a href="../namespaces/TijsVerkoyen.html">\TijsVerkoyen</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">306</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-158474819"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-158474819" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1918437706"></a>
+                                <a href="../namespaces/Slim.html" style="margin-left: 30px; padding-left: 0">Slim</a>
+            </div>
+            <div id="namespace-1918437706" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-283184993"></a>
+                                <a href="../namespaces/Slim.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-283184993" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slim.Exception.Pass.html">Pass</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Exception.Stop.html">Stop</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1586954017"></a>
+                                <a href="../namespaces/Slim.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-1586954017" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slim.Helper.Set.html">Set</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2049690824"></a>
+                                <a href="../namespaces/Slim.Http.html" style="margin-left: 30px; padding-left: 0">Http</a>
+            </div>
+            <div id="namespace-2049690824" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slim.Http.Cookies.html">Cookies</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Http.Headers.html">Headers</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Http.Request.html">Request</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Http.Response.html">Response</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Http.Util.html">Util</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-251982899"></a>
+                                <a href="../namespaces/Slim.Middleware.html" style="margin-left: 30px; padding-left: 0">Middleware</a>
+            </div>
+            <div id="namespace-251982899" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slim.Middleware.ContentTypes.html">ContentTypes</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Middleware.Flash.html">Flash</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Middleware.MethodOverride.html">MethodOverride</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Middleware.PrettyExceptions.html">PrettyExceptions</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Middleware.SessionCookie.html">SessionCookie</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slim.Environment.html">Environment</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Log.html">Log</a></li>
+                                                    <li class="class"><a href="../classes/Slim.LogWriter.html">LogWriter</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Middleware.html">Middleware</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Route.html">Route</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Router.html">Router</a></li>
+                                                    <li class="class"><a href="../classes/Slim.Slim.html">Slim</a></li>
+                                                    <li class="class"><a href="../classes/Slim.View.html">View</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1052427500"></a>
+                                <a href="../namespaces/TijsVerkoyen.html" style="margin-left: 30px; padding-left: 0">TijsVerkoyen</a>
+            </div>
+            <div id="namespace-1052427500" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-904738878"></a>
+                                <a href="../namespaces/TijsVerkoyen.Twitter.html" style="margin-left: 30px; padding-left: 0">Twitter</a>
+            </div>
+            <div id="namespace-904738878" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/TijsVerkoyen.Twitter.Twitter.html">Twitter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AdHocQueries.html">AdHocQueries</a></li>
+                                                    <li class="class"><a href="../classes/Club.html">Club</a></li>
+                                                    <li class="class"><a href="../classes/Competition.html">Competition</a></li>
+                                                    <li class="class"><a href="../classes/Database.html">Database</a></li>
+                                                    <li class="class"><a href="../classes/Fencer.html">Fencer</a></li>
+                                                    <li class="class"><a href="../classes/Series.html">Series</a></li>
+                                                    <li class="class"><a href="../classes/Twitter.html">Twitter</a></li>
+                                                    <li class="class"><a href="../classes/Utils.html">Utils</a></li>
+                                                    <li class="class"><a href="../classes/XMLSerializer.html">XMLSerializer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Slim.html">\Slim</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Slim</small>Slim</h1>
+                    <p><em>Slim</em></p>
+                    
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Slim.Slim.html#method_autoload" class="">autoload()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_registerAutoloader" class="">registerAutoloader()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method___get" class="">__get()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method___set" class="">__set()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method___isset" class="">__isset()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method___unset" class="">__unset()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getInstance" class="">getInstance()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_setName" class="">setName()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getName" class="">getName()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getDefaultSettings" class="">getDefaultSettings()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_config" class="">config()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getMode" class="">getMode()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_configureMode" class="">configureMode()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getLog" class="">getLog()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_map" class="">map()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_post" class="">post()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_put" class="">put()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_patch" class="">patch()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_options" class="">options()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_group" class="">group()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_any" class="">any()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_notFound" class="">notFound()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_error" class="">error()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_environment" class="">environment()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_request" class="">request()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_response" class="">response()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_router" class="">router()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_view" class="">view()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_render" class="">render()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_lastModified" class="">lastModified()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_etag" class="">etag()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_expires" class="">expires()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_setCookie" class="">setCookie()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getCookie" class="">getCookie()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_setEncryptedCookie" class="">setEncryptedCookie()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getEncryptedCookie" class="">getEncryptedCookie()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_deleteCookie" class="">deleteCookie()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_root" class="">root()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_stop" class="">stop()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_halt" class="">halt()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_pass" class="">pass()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_contentType" class="">contentType()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_status" class="">status()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_urlFor" class="">urlFor()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_redirect" class="">redirect()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_flash" class="">flash()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_flashNow" class="">flashNow()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_flashKeep" class="">flashKeep()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_hook" class="">hook()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_applyHook" class="">applyHook()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_getHooks" class="">getHooks()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_clearHooks" class="">clearHooks()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_add" class="">add()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_run" class="">run()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_call" class="">call()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_handleErrors" class="">handleErrors()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Slim.Slim.html#property_container" class="">$container</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_environment" class="">$environment</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_response" class="">$response</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_request" class="">$request</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_router" class="">$router</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Slim.Slim.html#constant_VERSION" class="">VERSION</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Slim.Slim.html#method_mapRoute" class="">mapRoute()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_callErrorHandler" class="">callErrorHandler()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_cleanBuffer" class="">cleanBuffer()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_generateTemplateMarkup" class="">generateTemplateMarkup()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_defaultNotFound" class="">defaultNotFound()</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#method_defaultError" class="">defaultError()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Slim.Slim.html#property_apps" class="">$apps</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_name" class="">$name</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_middleware" class="">$middleware</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_error" class="">$error</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_notFound" class="">$notFound</a><br />
+                                                                    <a href="../classes/Slim.Slim.html#property_hooks" class="">$hooks</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/assets.Slim.Slim.html"><div class="path-wrapper">assets/Slim/Slim.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Slim</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Slim\Slim</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Josh Lockhart</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_VERSION" name="constant_VERSION" class="anchor"></a>
+            <article id="constant_VERSION" class="constant">
+                <h3 class="">VERSION</h3>
+                <pre class="signature">VERSION</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            const
+                        </th>
+                        <td>
+                                                            <p>string</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_container" name="property_container" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$container</h3>
+                <pre class="signature">$container : \Slim\Helper\Set</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/Slim.Helper.Set.html">\Slim\Helper\Set</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_environment" name="property_environment" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$environment</h3>
+                <pre class="signature">$environment : \Slim\Environment</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Slim\Environment
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_response" name="property_response" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$response</h3>
+                <pre class="signature">$response : \Slim\Http\Response</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Slim\Http\Response
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_request" name="property_request" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$request</h3>
+                <pre class="signature">$request : \Slim\Http\Request</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Slim\Http\Request
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_router" name="property_router" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$router</h3>
+                <pre class="signature">$router : \Slim\Router</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Slim\Router
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_apps" name="property_apps" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$apps</h3>
+                <pre class="signature">$apps : \Slim\array[\Slim]</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Slim\array[\Slim]
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_name" name="property_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$name</h3>
+                <pre class="signature">$name : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_middleware" name="property_middleware" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$middleware</h3>
+                <pre class="signature">$middleware : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_error" name="property_error" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$error</h3>
+                <pre class="signature">$error : mixed</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                mixed
+                &mdash; Callable to be invoked if application error                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_notFound" name="property_notFound" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$notFound</h3>
+                <pre class="signature">$notFound : mixed</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                mixed
+                &mdash; Callable to be invoked if no matching routes are found                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_hooks" name="property_hooks" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$hooks</h3>
+                <pre class="signature">$hooks : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_autoload" name="method_autoload" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">autoload()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">autoload( <span class="argument">$className</span>)</pre>
+                <p><em>Slim PSR-0 autoloader</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$className </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_registerAutoloader" name="method_registerAutoloader" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">registerAutoloader()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">registerAutoloader()</pre>
+                <p><em>Register Slim&#039;s PSR-0 autoloader</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array <span class="argument">$userSettings</span>)</pre>
+                <p><em>Constructor</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$userSettings </td>
+                                <td><p>Associative array of application settings</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___get" name="method___get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__get( <span class="argument">$name</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___set" name="method___set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__set( <span class="argument">$name</span>,  <span class="argument">$value</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___isset" name="method___isset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__isset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__isset( <span class="argument">$name</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___unset" name="method___unset" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__unset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__unset( <span class="argument">$name</span>)</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getInstance" name="method_getInstance" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getInstance()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getInstance(string <span class="argument">$name</span>) : \Slim\Slim|null</pre>
+                <p><em>Get application instance by name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The name of the Slim application</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Slim.html">\Slim\Slim</a>|null
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setName" name="method_setName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setName(string <span class="argument">$name</span>)</pre>
+                <p><em>Set Slim application name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The name of this Slim application</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getName" name="method_getName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getName() : string|null</pre>
+                <p><em>Get Slim application name</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string|null
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDefaultSettings" name="method_getDefaultSettings" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDefaultSettings()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDefaultSettings() : array</pre>
+                <p><em>Get default application settings</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_config" name="method_config" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">config()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">config(string|array <span class="argument">$name</span>, mixed <span class="argument">$value</span>) : mixed</pre>
+                <p><em>Configure Slim Settings</em></p>
+                <p>This method defines application settings and acts as a setter and a getter.</p>
+<p>If only one argument is specified and that argument is a string, the value
+of the setting identified by the first argument will be returned, or NULL if
+that setting does not exist.</p>
+<p>If only one argument is specified and that argument is an associative array,
+the array will be merged into the existing application settings.</p>
+<p>If two arguments are provided, the first argument is the name of the setting
+to be created or updated, and the second argument is the setting value.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|array</td>
+                                <td>$name </td>
+                                <td><p>If a string, the name of the setting to set or retrieve. Else an associated array of setting names and values</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>If name is a string, the value of the setting identified by $name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>The value of a setting if only one argument is a string</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMode" name="method_getMode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMode() : string</pre>
+                <p><em>Get application mode</em></p>
+                <p>This method determines the application mode. It first inspects the $_ENV
+superglobal for key <code>SLIM_MODE</code>. If that is not found, it queries
+the <code>getenv</code> function. Else, it uses the application <code>mode</code> setting.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_configureMode" name="method_configureMode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">configureMode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">configureMode(string <span class="argument">$mode</span>, mixed <span class="argument">$callable</span>) : void</pre>
+                <p><em>Configure Slim for a given mode</em></p>
+                <p>This method will immediately invoke the callable if
+the specified mode matches the current application mode.
+Otherwise, the callable is ignored. This should be called
+only <em>after</em> you initialize your Slim app.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$mode </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$callable </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLog" name="method_getLog" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLog()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLog() : \Slim\Log</pre>
+                <p><em>Get application log</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Log.html">\Slim\Log</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_map" name="method_map" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">map()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">map() : \Slim\Route</pre>
+                <p><em>Add generic route without associated HTTP method</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get() : \Slim\Route</pre>
+                <p><em>Add GET route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_post" name="method_post" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">post()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">post() : \Slim\Route</pre>
+                <p><em>Add POST route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_put" name="method_put" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">put()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">put() : \Slim\Route</pre>
+                <p><em>Add PUT route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_patch" name="method_patch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">patch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">patch() : \Slim\Route</pre>
+                <p><em>Add PATCH route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete() : \Slim\Route</pre>
+                <p><em>Add DELETE route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_options" name="method_options" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">options()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">options() : \Slim\Route</pre>
+                <p><em>Add OPTIONS route</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href=""><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_group" name="method_group" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">group()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">group()</pre>
+                <p><em>Route Groups</em></p>
+                <p>This method accepts a route pattern and a callback all Route
+declarations in the callback will be prepended by the group(s)
+that it is in</p>
+<p>Accepts the same parameters as a standard route so:
+(pattern, middleware1, middleware2, ..., $callback)</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_any" name="method_any" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">any()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">any()</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_notFound" name="method_notFound" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">notFound()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">notFound(mixed <span class="argument">$callable</span>)</pre>
+                <p><em>Not Found Handler</em></p>
+                <p>This method defines or invokes the application-wide Not Found handler.
+There are two contexts in which this method may be invoked:</p>
+<ol>
+<li>When declaring the handler:</li>
+</ol>
+<p>If the $callable parameter is not null and is callable, this
+method will register the callable to be invoked when no
+routes match the current HTTP request. It WILL NOT invoke the callable.</p>
+<ol>
+<li>When invoking the handler:</li>
+</ol>
+<p>If the $callable parameter is null, Slim assumes you want
+to invoke an already-registered handler. If the handler has been
+registered and is callable, it is invoked and sends a 404 HTTP Response
+whose body is the output of the Not Found handler.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$callable </td>
+                                <td><p>Anything that returns true for is_callable()</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_error" name="method_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">error(mixed <span class="argument">$argument</span>)</pre>
+                <p><em>Error Handler</em></p>
+                <p>This method defines or invokes the application-wide Error handler.
+There are two contexts in which this method may be invoked:</p>
+<ol>
+<li>When declaring the handler:</li>
+</ol>
+<p>If the $argument parameter is callable, this
+method will register the callable to be invoked when an uncaught
+Exception is detected, or when otherwise explicitly invoked.
+The handler WILL NOT be invoked in this context.</p>
+<ol>
+<li>When invoking the handler:</li>
+</ol>
+<p>If the $argument parameter is not callable, Slim assumes you want
+to invoke an already-registered handler. If the handler has been
+registered and is callable, it is invoked and passed the caught Exception
+as its one and only argument. The error handler's output is captured
+into an output buffer and sent as the body of a 500 HTTP Response.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$argument </td>
+                                <td><p>Callable|\Exception</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_environment" name="method_environment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">environment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">environment() : \Slim\Environment</pre>
+                <p><em>Get a reference to the Environment object</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Environment.html">\Slim\Environment</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_request" name="method_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">request() : \Slim\Http\Request</pre>
+                <p><em>Get the Request object</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Http.Request.html">\Slim\Http\Request</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_response" name="method_response" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">response()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">response() : \Slim\Http\Response</pre>
+                <p><em>Get the Response object</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Http.Response.html">\Slim\Http\Response</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_router" name="method_router" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">router()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">router() : \Slim\Router</pre>
+                <p><em>Get the Router object</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Router.html">\Slim\Router</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_view" name="method_view" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">view()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">view(string|\Slim\View <span class="argument">$viewClass</span>) : \Slim\View</pre>
+                <p><em>Get and/or set the View</em></p>
+                <p>This method declares the View to be used by the Slim application.
+If the argument is a string, Slim will instantiate a new object
+of the same class. If the argument is an instance of View or a subclass
+of View, Slim will use the argument as the View.</p>
+<p>If a View already exists and this method is called to create a
+new View, data already set in the existing View will be
+transferred to the new View.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|<a href="../classes/Slim.View.html">\Slim\View</a></td>
+                                <td>$viewClass </td>
+                                <td><p>The name or instance of a \Slim\View subclass</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.View.html">\Slim\View</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_render" name="method_render" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">render()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">render(string <span class="argument">$template</span>, array <span class="argument">$data</span>, int <span class="argument">$status</span>)</pre>
+                <p><em>Render a template</em></p>
+                <p>Call this method within a GET, POST, PUT, PATCH, DELETE, NOT FOUND, or ERROR
+callable to render a template whose output is appended to the
+current HTTP response body. How the template is rendered is
+delegated to the current View.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$template </td>
+                                <td><p>The name of the template passed into the view's render() method</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data </td>
+                                <td><p>Associative array of data made available to the view</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>int</td>
+                                <td>$status </td>
+                                <td><p>The HTTP response status code to use (optional)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_lastModified" name="method_lastModified" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">lastModified()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">lastModified(int <span class="argument">$time</span>)</pre>
+                <p><em>Set Last-Modified HTTP Response Header</em></p>
+                <p>Set the HTTP 'Last-Modified' header and stop if a conditional
+GET request's <code>If-Modified-Since</code> header matches the last modified time
+of the resource. The <code>time</code> argument is a UNIX timestamp integer value.
+When the current request includes an 'If-Modified-Since' header that
+matches the specified last modified time, the application will stop
+and send a '304 Not Modified' response to the client.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$time </td>
+                                <td><p>The last modified UNIX timestamp</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>If provided timestamp is not an integer</p></dd>
+                                                                    </dl>
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_etag" name="method_etag" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">etag()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">etag(string <span class="argument">$value</span>, string <span class="argument">$type</span>)</pre>
+                <p><em>Set ETag HTTP Response Header</em></p>
+                <p>Set the etag header and stop if the conditional GET request matches.
+The <code>value</code> argument is a unique identifier for the current resource.
+The <code>type</code> argument indicates whether the etag should be used as a strong or
+weak cache validator.</p>
+<p>When the current request includes an 'If-None-Match' header with
+a matching etag, execution is immediately stopped. If the request
+method is GET or HEAD, a '304 Not Modified' response is sent.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td><p>The etag value</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The type of etag to create; either "strong" or "weak"</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>If provided type is invalid</p></dd>
+                                                                    </dl>
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_expires" name="method_expires" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">expires()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">expires(string|int <span class="argument">$time</span>)</pre>
+                <p><em>Set Expires HTTP response header</em></p>
+                <p>The <code>Expires</code> header tells the HTTP client the time at which
+the current resource should be considered stale. At that time the HTTP
+client will send a conditional GET request to the server; the server
+may return a 200 OK if the resource has changed, else a 304 Not Modified
+if the resource has not changed. The <code>Expires</code> header should be used in
+conjunction with the <code>etag()</code> or <code>lastModified()</code> methods above.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|int</td>
+                                <td>$time </td>
+                                <td><p>If string, a time to be parsed by <code>strtotime()</code>;</p>
+<pre><code>                         If int, a UNIX timestamp;</code></pre></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCookie" name="method_setCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCookie(string <span class="argument">$name</span>, string <span class="argument">$value</span>, int|string <span class="argument">$time</span>, string <span class="argument">$path</span>, string <span class="argument">$domain</span>, bool <span class="argument">$secure</span>, bool <span class="argument">$httponly</span>)</pre>
+                <p><em>Set HTTP cookie to be sent with the HTTP response</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The cookie name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td><p>The cookie value</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>int|string</td>
+                                <td>$time </td>
+                                <td><p>The duration of the cookie;</p>
+<pre><code>                             If integer, should be UNIX timestamp;
+                             If string, converted to UNIX timestamp with `strtotime`;</code></pre></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The path on the server in which the cookie will be available on</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$domain </td>
+                                <td><p>The domain that the cookie is available to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$secure </td>
+                                <td><p>Indicates that the cookie should only be transmitted over a secure</p>
+<pre><code>                         HTTPS connection to/from the client</code></pre></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$httponly </td>
+                                <td><p>When TRUE the cookie will be made accessible only through the HTTP protocol</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCookie" name="method_getCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCookie(string <span class="argument">$name</span>, bool <span class="argument">$deleteIfInvalid</span>) : string|null</pre>
+                <p><em>Get value of HTTP cookie from the current HTTP request</em></p>
+                <p>Return the value of a cookie from the current HTTP request,
+or return NULL if cookie does not exist. Cookies created during
+the current request will not be available until the next request.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$deleteIfInvalid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|null
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setEncryptedCookie" name="method_setEncryptedCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setEncryptedCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setEncryptedCookie(string <span class="argument">$name</span>, mixed <span class="argument">$value</span>, mixed <span class="argument">$expires</span>, string <span class="argument">$path</span>, string <span class="argument">$domain</span>, bool <span class="argument">$secure</span>, bool <span class="argument">$httponly</span>)</pre>
+                <p><em>DEPRECATION WARNING! Use `setCookie` with the `cookies.encrypt` app setting set to `true`.</em></p>
+                <p>Set encrypted HTTP cookie</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The cookie name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>The cookie value</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$expires </td>
+                                <td><p>The duration of the cookie;</p>
+<pre><code>                             If integer, should be UNIX timestamp;
+                             If string, converted to UNIX timestamp with `strtotime`;</code></pre></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The path on the server in which the cookie will be available on</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$domain </td>
+                                <td><p>The domain that the cookie is available to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$secure </td>
+                                <td><p>Indicates that the cookie should only be transmitted over a secure</p>
+<pre><code>                         HTTPS connection from the client</code></pre></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$httponly </td>
+                                <td><p>When TRUE the cookie will be made accessible only through the HTTP protocol</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getEncryptedCookie" name="method_getEncryptedCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getEncryptedCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getEncryptedCookie(string <span class="argument">$name</span>, bool <span class="argument">$deleteIfInvalid</span>) : string|bool</pre>
+                <p><em>DEPRECATION WARNING! Use `getCookie` with the `cookies.encrypt` app setting set to `true`.</em></p>
+                <p>Get value of encrypted HTTP cookie</p>
+<p>Return the value of an encrypted cookie from the current HTTP request,
+or return NULL if cookie does not exist. Encrypted cookies created during
+the current request will not be available until the next request.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$deleteIfInvalid </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string|bool
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_deleteCookie" name="method_deleteCookie" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">deleteCookie()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">deleteCookie(string <span class="argument">$name</span>, string <span class="argument">$path</span>, string <span class="argument">$domain</span>, bool <span class="argument">$secure</span>, bool <span class="argument">$httponly</span>)</pre>
+                <p><em>Delete HTTP cookie (encrypted or unencrypted)</em></p>
+                <p>Remove a Cookie from the client. This method will overwrite an existing Cookie
+with a new, empty, auto-expiring Cookie. This method's arguments must match
+the original Cookie's respective arguments for the original Cookie to be
+removed. If any of this method's arguments are omitted or set to NULL, the
+default Cookie setting values (set during Slim::init) will be used instead.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The cookie name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td><p>The path on the server in which the cookie will be available on</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$domain </td>
+                                <td><p>The domain that the cookie is available to</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$secure </td>
+                                <td><p>Indicates that the cookie should only be transmitted over a secure</p>
+<pre><code>                         HTTPS connection from the client</code></pre></td>
+                            </tr>
+                                                    <tr>
+                                <td>bool</td>
+                                <td>$httponly </td>
+                                <td><p>When TRUE the cookie will be made accessible only through the HTTP protocol</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_root" name="method_root" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">root()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">root() : string</pre>
+                <p><em>Get the absolute path to this Slim application&#039;s root directory</em></p>
+                <p>This method returns the absolute path to the Slim application's
+directory. If the Slim application is installed in a public-accessible
+sub-directory, the sub-directory path will be included. This method
+will always return an absolute path WITH a trailing slash.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stop" name="method_stop" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stop()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stop()</pre>
+                <p><em>Stop</em></p>
+                <p>The thrown exception will be caught in application's <code>call()</code> method
+and the response will be sent as is to the HTTP client.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Slim\Exception\Stop</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_halt" name="method_halt" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">halt()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">halt(int <span class="argument">$status</span>, string <span class="argument">$message</span>)</pre>
+                <p><em>Halt</em></p>
+                <p>Stop the application and immediately send the response with a
+specific status and body to the HTTP client. This may send any
+type of response: info, success, redirect, client error, or server error.
+If you need to render a template AND customize the response status,
+use the application's <code>render()</code> method instead.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$status </td>
+                                <td><p>The HTTP response status</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$message </td>
+                                <td><p>The HTTP response body</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pass" name="method_pass" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pass()</pre>
+                <p><em>Pass</em></p>
+                <p>The thrown exception is caught in the application's <code>call()</code> method causing
+the router's current iteration to stop and continue to the subsequent route if available.
+If no subsequent matching routes are found, a 404 response will be sent to the client.</p>
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Slim\Exception\Pass</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_contentType" name="method_contentType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">contentType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">contentType(string <span class="argument">$type</span>)</pre>
+                <p><em>Set the HTTP response Content-Type</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td><p>The Content-Type for the Response (ie. text/html)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_status" name="method_status" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">status()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">status(int <span class="argument">$code</span>)</pre>
+                <p><em>Set the HTTP response status code</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$code </td>
+                                <td><p>The HTTP response status code</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_urlFor" name="method_urlFor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">urlFor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">urlFor(string <span class="argument">$name</span>, array <span class="argument">$params</span>) : string</pre>
+                <p><em>Get the URL for a named route</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The route name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>Associative array of URL parameters and replacement values</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>If named route does not exist</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_redirect" name="method_redirect" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">redirect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">redirect(string <span class="argument">$url</span>, int <span class="argument">$status</span>)</pre>
+                <p><em>Redirect</em></p>
+                <p>This method immediately redirects to a new URL. By default,
+this issues a 302 Found response; this is considered the default
+generic redirect response. You may also specify another valid
+3xx status code if you want. This method will automatically set the
+HTTP Location header for you using the URL parameter.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td><p>The destination URL</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>int</td>
+                                <td>$status </td>
+                                <td><p>The HTTP redirect status code (optional)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_flash" name="method_flash" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">flash()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">flash(string <span class="argument">$key</span>, mixed <span class="argument">$value</span>)</pre>
+                <p><em>Set flash message for subsequent request</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_flashNow" name="method_flashNow" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">flashNow()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">flashNow(string <span class="argument">$key</span>, mixed <span class="argument">$value</span>)</pre>
+                <p><em>Set flash message for current request</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_flashKeep" name="method_flashKeep" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">flashKeep()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">flashKeep()</pre>
+                <p><em>Keep flash messages from previous request for subsequent request</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hook" name="method_hook" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hook()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hook(string <span class="argument">$name</span>, mixed <span class="argument">$callable</span>, int <span class="argument">$priority</span>)</pre>
+                <p><em>Assign hook</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The hook name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$callable </td>
+                                <td><p>A callable object</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>int</td>
+                                <td>$priority </td>
+                                <td><p>The hook priority; 0 = high, 10 = low</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_applyHook" name="method_applyHook" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">applyHook()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">applyHook(string <span class="argument">$name</span>, mixed <span class="argument">$hookArg</span>)</pre>
+                <p><em>Invoke hook</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>The hook name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$hookArg </td>
+                                <td><p>(Optional) Argument for hooked functions</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHooks" name="method_getHooks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHooks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHooks(string <span class="argument">$name</span>) : array|null</pre>
+                <p><em>Get hook listeners</em></p>
+                <p>Return an array of registered hooks. If <code>$name</code> is a valid
+hook name, only the listeners attached to that hook are returned.
+Else, all listeners are returned as an associative array whose
+keys are hook names and whose values are arrays of listeners.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A hook name (Optional)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array|null
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clearHooks" name="method_clearHooks" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">clearHooks()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clearHooks(string <span class="argument">$name</span>)</pre>
+                <p><em>Clear hook listeners</em></p>
+                <p>Clear all listeners for all hooks. If <code>$name</code> is
+a valid hook name, only the listeners attached
+to that hook will be cleared.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>A hook name (Optional)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_add" name="method_add" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">add()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">add(\Slim\Middleware <span class="argument">$newMiddleware</span>)</pre>
+                <p><em>Add middleware</em></p>
+                <p>This method prepends new middleware to the application middleware stack.
+The argument must be an instance that subclasses Slim_Middleware.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Slim.Middleware.html">\Slim\Middleware</a></td>
+                                <td>$newMiddleware </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_run" name="method_run" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">run()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">run()</pre>
+                <p><em>Run</em></p>
+                <p>This method invokes the middleware stack, including the core Slim application;
+the result is an array of HTTP status, header, and body. These three items
+are returned to the HTTP client.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_call" name="method_call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">call()</pre>
+                <p><em>Call</em></p>
+                <p>This method finds and iterates all route objects that match the current request URI.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleErrors" name="method_handleErrors" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">handleErrors()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleErrors(int <span class="argument">$errno</span>, string <span class="argument">$errstr</span>, string <span class="argument">$errfile</span>, int <span class="argument">$errline</span>) : bool</pre>
+                <p><em>Convert errors into ErrorException objects</em></p>
+                <p>This method catches PHP errors and converts them into \ErrorException objects;
+these \ErrorException objects are then thrown and caught by Slim's
+built-in or custom error handlers.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$errno </td>
+                                <td><p>The numeric type of the Error</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$errstr </td>
+                                <td><p>The error message</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$errfile </td>
+                                <td><p>The absolute path to the affected file</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>int</td>
+                                <td>$errline </td>
+                                <td><p>The line number of the error in the affected file</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ErrorException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    bool
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_mapRoute" name="method_mapRoute" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">mapRoute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">mapRoute( <span class="argument">$args</span>) : \Slim\Route</pre>
+                <p><em>Add GET|POST|PUT|PATCH|DELETE route</em></p>
+                <p>Adds a new route to the router with associated callable. This
+route will only be invoked when the HTTP request's method matches
+this route's method.</p>
+<p>ARGUMENTS:</p>
+<p>First:       string  The URL pattern (REQUIRED)
+In-Between:  mixed   Anything that returns TRUE for <code>is_callable</code> (OPTIONAL)
+Last:        mixed   Anything that returns TRUE for <code>is_callable</code> (REQUIRED)</p>
+<p>The first argument is required and must always be the
+route pattern (ie. '/books/:id').</p>
+<p>The last argument is required and must always be the callable object
+to be invoked when the route matches an HTTP request.</p>
+<p>You may also provide an unlimited number of in-between arguments;
+each interior argument must be callable and will be invoked in the
+order specified before the route's callable is invoked.</p>
+<p>USAGE:</p>
+<p>Slim::get('/foo'[, middleware, middleware, ...], callable);</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$args </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Slim.Route.html">\Slim\Route</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_callErrorHandler" name="method_callErrorHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">callErrorHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">callErrorHandler(\Exception|null <span class="argument">$argument</span>) : string</pre>
+                <p><em>Call error handler</em></p>
+                <p>This will invoke the custom or default error handler
+and RETURN its output.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Exception|null</td>
+                                <td>$argument </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_cleanBuffer" name="method_cleanBuffer" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">cleanBuffer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">cleanBuffer()</pre>
+                <p><em>Clean current output buffer</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_generateTemplateMarkup" name="method_generateTemplateMarkup" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">generateTemplateMarkup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">generateTemplateMarkup(string <span class="argument">$title</span>, string <span class="argument">$body</span>) : string</pre>
+                <p><em>Generate diagnostic template markup</em></p>
+                <p>This method accepts a title and body content to generate an HTML document layout.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$title </td>
+                                <td><p>The title of the HTML template</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$body </td>
+                                <td><p>The body content of the HTML template</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_defaultNotFound" name="method_defaultNotFound" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">defaultNotFound()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">defaultNotFound()</pre>
+                <p><em>Default Not Found handler</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_defaultError" name="method_defaultError" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">defaultError()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">defaultError( <span class="argument">$e</span>)</pre>
+                <p><em>Default Error handler</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$e </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Slim.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/assets/Slim/Slim.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Slim.html">\Slim</a></li>
+                                                                            <li><a href="../namespaces/TijsVerkoyen.html">\TijsVerkoyen</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 2nd, 2014 at 19:32.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
