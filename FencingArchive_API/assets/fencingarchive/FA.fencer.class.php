@@ -47,7 +47,9 @@ class Fencer {
 			$this->forename = $row['forename'];
 			$this->nationality = $row['nationality'];
 			$this->name = $this->getName();
-			$this->clubs = explode(',', $row['club_id']);
+
+//			$this->clubs = explode(',', $row['club_id']);
+			
 			if ( $row['image'] ) {
 				$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
 			} else {
@@ -62,6 +64,7 @@ class Fencer {
 			$this->popularity = explode("|", substr($row['popularity'], 0, strlen($row['popularity'])-1));
 			
 			// Find medal numbers
+
 			$row = mysql_fetch_assoc($db->query("SELECT COUNT(cid) as medals FROM `results` WHERE fid=$fid AND position=1;"));
 			$this->medals['gold'] = $row['medals'];
 			
@@ -77,7 +80,7 @@ class Fencer {
 			{
 				array_push($this->results, array('position' => $row['position'], 'competition' => new Competition($row['cid'])));
 			}
-			
+/*			
 			// Populate bouts array
 			$results = $db->query("SELECT * FROM `fencers_bouts.v` WHERE `winner_id`=$fid OR `loser_id`=$fid;");
 			while ( $row = mysql_fetch_assoc($results) )
@@ -91,7 +94,7 @@ class Fencer {
 			{
 				array_push($this->rankings, array('position' => $row['position'], 'series' => new Series($row['sid'])));
 			}
-			
+*/			
 			// Mark the object as valid
 			$this->isvalid = true;
 		}
