@@ -32,7 +32,7 @@ class Club {
 	
 	public function getLink()
 	{
-		return "<a href=\"" . BASE_URL . "/club.php?id=" . urlencode($this->club_id) . "\">" . $this->club_name . "</a>";
+		return "<a href=\"" . BASE_URL . "/club/" . urlencode($this->club_id) . "\">" . $this->club_name . "</a>";
 	}
 	
 	public function getFencers()

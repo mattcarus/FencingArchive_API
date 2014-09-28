@@ -55,7 +55,7 @@ class Fencer {
 			} else {
 				$this->image_url = "http://fencingarchive.net/image.php?image_id=1";
 			}	
-			$this->profile_url = BASE_URL . "/profile.php?id=$fid";
+			$this->profile_url = BASE_URL . "/fencer/" . $fid;
 			$this->banner_url = BASE_URL . "/forum_banner.php?id=$fid";
 			$this->tag_url = "http://fencingarchive.net/qr_tag.php?type=fid&code=$fid&size=6";
 			$this->elo = $row['elo'];

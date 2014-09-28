@@ -78,7 +78,7 @@ class Competition {
 	
 	public function getLink()
 	{
-		return "<a href=\"" . BASE_URL . "/competition.php?cid=" . $this->cid . "\">" . $this->getName() . "</a>";
+		return "<a href=\"" . BASE_URL . "/competition/" . $this->cid . "\">" . $this->getName() . "</a>";
 	}
 	
 	public function getResults()

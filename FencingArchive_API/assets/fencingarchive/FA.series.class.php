@@ -57,7 +57,7 @@ class Series {
 	
 	public function getLink()
 	{
-		return "<a href=\"" . BASE_URL . "/series.php?sid=" . $this->sid . "\">" . $this->getName() . "</a>";
+		return "<a href=\"" . BASE_URL . "/series/" . $this->sid . "\">" . $this->getName() . "</a>";
 	}
 
 	public function getRankings($topN = '')
