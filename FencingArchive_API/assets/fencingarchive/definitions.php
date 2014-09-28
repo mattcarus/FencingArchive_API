@@ -1,7 +1,7 @@
 <?php
 
 	// Site constants
-	define("BASE_URL", "http://v3.fencingarchive.net/");
+	define("BASE_URL", "http://v3.fencingarchive.net");
 
 	// Database definitions
 	define("DB_HOST", "localhost");
