@@ -87,7 +87,7 @@ class Competition {
 		if ( isset($this->cid) )
 		{
 			$db = new Database();
-			$sqlResults = $db->query("SELECT `position`, `fid` FROM `competitions_results.v` WHERE `cid`='" . $this->cid . "' ORDER BY `position` ASC;");
+			$sqlResults = $db->query("SELECT `position`, `fid` FROM `fencers_results.v` WHERE `cid`='" . $this->cid . "' ORDER BY `position` ASC;");
 
 			while ( $row = mysql_fetch_assoc($sqlResults) )
 			{
