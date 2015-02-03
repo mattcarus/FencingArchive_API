@@ -21,6 +21,20 @@ class AdHocQueries
 		return $competitions;
 	}
 	
+	public function lastNCompetitionIds($offset, $number)
+	{
+		$db = new Database();
+		
+		$results = $db->query("SELECT `id` FROM `competitions` ORDER BY `date` DESC LIMIT " . $offset . ", " . $number . ";");
+		
+		$competitions = array();
+		while ( $row = mysql_fetch_assoc($results) )
+		{
+			array_push($competitions, $row['id']);
+		}
+		return $competitions;
+	}
+	
 	public function recentSeries()
 	{
 		$db = new Database();
