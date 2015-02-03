@@ -208,7 +208,7 @@ $app->get('/query/:queryName/:options', function ($queryName, $options) {
 $app->get('/search/:term', function ($term) {
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Origin: *');
-	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
+	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=\"$term\"");
 });
 
 
@@ -1021,7 +1021,7 @@ class Twitter
 	 * @param  int[optional]    $count              Specifies the number of tweets to try and retrieve, up to a maximum of 200 per distinct request. The value of count is best thought of as a limit to the number of tweets to return because suspended or deleted content is removed after the count has been applied. We include retweets in the count, even if include_rts is not supplied.
 	 * @param  string[optional] $maxId              Returns results with an ID less than (that is, older than) or equal to the specified ID.
 	 * @param  bool[optional]   $trimUser           When set to true, each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
-	 * @param  bool[optional]   $excludeReplies     This parameter will prevent replies from appearing in the returned timeline. Using exclude_replies with the count parameter will mean you will receive up-to count tweets — this is because the count parameter retrieves that many tweets before filtering out retweets and replies.
+	 * @param  bool[optional]   $excludeReplies     This parameter will prevent replies from appearing in the returned timeline. Using exclude_replies with the count parameter will mean you will receive up-to count tweets ï¿½ this is because the count parameter retrieves that many tweets before filtering out retweets and replies.
 	 * @param  bool[optional]   $contributorDetails This parameter enhances the contributors element of the status response to include the screen_name of the contributor. By default only the user_id of the contributor is included.
 	 * @param  bool[optional]   $includeRts         When set to false, the timeline will strip any native retweets (though they will still count toward both the maximal length of the timeline and the slice selected by the count parameter). Note: If you're using the trim_user parameter in conjunction with include_rts, the retweets will still contain a full user object.
 	 * @return array
@@ -1082,7 +1082,7 @@ class Twitter
 	 * @param  string[optional] $sinceId            Returns results with an ID greater than (that is, more recent than) the specified ID. There are limits to the number of Tweets which can be accessed through the API. If the limit of Tweets has occured since the since_id, the since_id will be forced to the oldest ID available.
 	 * @param  string[optional] $maxId              Returns results with an ID less than (that is, older than) or equal to the specified ID.
 	 * @param  bool[optional]   $trimUser           When set to true, each tweet returned in a timeline will include a user object including only the status authors numerical ID. Omit this parameter to receive the complete user object.
-	 * @param  bool[optional]   $excludeReplies     This parameter will prevent replies from appearing in the returned timeline. Using exclude_replies with the count parameter will mean you will receive up-to count tweets — this is because the count parameter retrieves that many tweets before filtering out retweets and replies.
+	 * @param  bool[optional]   $excludeReplies     This parameter will prevent replies from appearing in the returned timeline. Using exclude_replies with the count parameter will mean you will receive up-to count tweets ï¿½ this is because the count parameter retrieves that many tweets before filtering out retweets and replies.
 	 * @param  bool[optional]   $contributorDetails This parameter enhances the contributors element of the status response to include the screen_name of the contributor. By default only the user_id of the contributor is included.
 	 * @param  bool[optional]   $includeEntities    The entities node will be disincluded when set to false.
 	 * @return array
@@ -1642,7 +1642,7 @@ class Twitter
 	// Friends & Followers resources
 	/**
 	 * Returns a cursored collection of user IDs for every user the specified user is following (otherwise known as their "friends").
-	 * At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
+	 * At this time, results are ordered with the most recent following first ï¿½ however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 	 * This method is especially powerful when used in conjunction with GET users/lookup, a method that allows you to convert user IDs into full user objects in bulk.
 	 *
 	 * @param  string[optional] $userId       The ID of the user for whom to return results for.
@@ -1681,7 +1681,7 @@ class Twitter
 
 	/**
 	 * Returns a cursored collection of user IDs for every user following the specified user.
-	 * At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
+	 * At this time, results are ordered with the most recent following first ï¿½ however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 5,000 user IDs and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 	 * This method is especially powerful when used in conjunction with GET users/lookup, a method that allows you to convert user IDs into full user objects in bulk.
 	 *
 	 * @param  string[optional] $userId       The ID of the user for whom to return results for.
@@ -1932,7 +1932,7 @@ class Twitter
 
 	/**
 	 * Returns a cursored collection of user objects for every user the specified user is following (otherwise known as their "friends").
-	 * At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
+	 * At this time, results are ordered with the most recent following first ï¿½ however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 	 *
 	 * @param  string[optional] $userId          The ID of the user for whom to return results for.
 	 * @param  string[optional] $screenName      The screen name of the user for whom to return results for.
@@ -1977,7 +1977,7 @@ class Twitter
 
 	/**
 	 * Returns a cursored collection of user objects for users following the specified user.
-	 * At this time, results are ordered with the most recent following first — however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
+	 * At this time, results are ordered with the most recent following first ï¿½ however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple "pages" of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.
 	 *
 	 * @param  string[optional] $userId          The ID of the user for whom to return results for.
 	 * @param  string[optional] $screenName      The screen name of the user for whom to return results for.
