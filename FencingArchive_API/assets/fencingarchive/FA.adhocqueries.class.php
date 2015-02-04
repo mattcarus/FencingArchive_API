@@ -35,7 +35,7 @@ class AdHocQueries
 		return $competitions;
 	}
 	
-	public function closeFencers($inputFid, $number)
+	public function closeFencers($offset, $inputFid = 4, $number = 3)
 	{
 		$db = new Database();
 		
