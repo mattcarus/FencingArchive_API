@@ -39,7 +39,7 @@ class AdHocQueries
 	{
 		$db = new Database();
 		
-		$results = $db->query("SELECT * FROM ( SELECT fid, count(*) AS magnitude FROM `fencers_results.v` WHERE cid IN (SELECT cid FROM `results` WHERE fid = $inputFid) AND fid != $inputFid GROUP BY fid ORDER BY magnitude DESC LIMIT 0, $number; ) as friends LEFT JOIN `fencers` ON fid = `fencers`.`id`;");
+		$results = $db->query("SELECT * FROM ( SELECT fid, count(*) AS magnitude FROM `fencers_results.v` WHERE cid IN (SELECT cid FROM `results` WHERE fid = $inputFid) AND fid != $inputFid GROUP BY fid ORDER BY magnitude DESC LIMIT 0, $number ) as friends LEFT JOIN `fencers` ON fid = `fencers`.`id`;");
 		
 		$fencers = array();
 		while ( $row = mysql_fetch_assoc($results) )
