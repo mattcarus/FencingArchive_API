@@ -35,6 +35,20 @@ class AdHocQueries
 		return $competitions;
 	}
 	
+	public function closeFencers($inputFid, $number)
+	{
+		$db = new Database();
+		
+		$results = $db->query("SELECT fid, count(*) AS magnitude FROM `fencers_results.v` WHERE cid IN (SELECT cid FROM `results` WHERE fid = $inputFid) AND fid != $inputFid GROUP BY fid ORDER BY magnitude DESC LIMIT 0, $number;");
+		
+		$fencers = array();
+		while ( $row = mysql_fetch_assoc($results) )
+		{
+			array_push($fencers, $row['fid']);
+		}
+		return $fencers;
+	}
+	
 	public function recentSeries()
 	{
 		$db = new Database();
