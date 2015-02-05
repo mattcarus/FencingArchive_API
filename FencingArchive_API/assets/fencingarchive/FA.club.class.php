@@ -38,7 +38,7 @@ class Club {
 	public function getFencers()
 	{
 		$db = new Database();
-		$results = $db->query("SELECT `id` FROM `fencers` WHERE `club_id` LIKE '%" . $this->club_id . "%';");
+		$results = $db->query("SELECT `fencer_id` FROM `club_members` WHERE `club_id` = '" . $this->club_id . "';");
 
 		$club_fencers = array();
 		while ( $row = mysql_fetch_assoc($results) )
