@@ -208,7 +208,7 @@ $app->get('/query/:queryName/:options', function ($queryName, $options) {
 $app->get('/search/:term', function ($term) {
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Origin: *');
-	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=\"$term\"");
+	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
 
