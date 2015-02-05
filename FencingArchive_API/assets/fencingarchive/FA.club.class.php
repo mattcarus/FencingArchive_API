@@ -5,10 +5,18 @@
  */
 
 class Club {
-	public $club_id = '';
-	public $club_name = '';
-	public $club_fencers = array();
-
+	public $id = '';
+	public $name = '';
+	public $url = '';
+	public $latitude = '';
+	public $longitude = '';
+	public $status = '';
+	public $founding_date = '';
+	public $absorbed_into = '';
+	public $image_id = '';
+	public $image_url = '';
+	
+	
 	function __construct($id)
 	{
 		$this->Club($id);
@@ -17,12 +25,17 @@ class Club {
 	function Club($id)
 	{
 		$db = new Database();
-		$results = $db->query("SELECT `name` FROM `clubs` WHERE `id`='$id'");
+		$results = $db->query("SELECT * FROM `clubs` WHERE `id`='$id'");
 		
 		$row = mysql_fetch_assoc($results);
-		$this->club_name = $row['name'];
-		$this->club_id = $id;
-		$this->club_fencers = $this->getFencers();
+		$this->name = $row['name'];
+		$this->id = $id;
+		$this->url = $row['url'];
+		$this->latitude = $row['latitude'];
+		$this->longitude = $row['longitude'];
+		list($this->status, $this->founding_date, $this->absorbed_into) = split("|", $row['status']);
+		$this->image_id = $row['image_id'];
+		$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image_id'];
 	}
 	
 	public function getName()
@@ -35,17 +48,48 @@ class Club {
 		return "<a href=\"" . BASE_URL . "/club/" . urlencode($this->club_id) . "\">" . $this->club_name . "</a>";
 	}
 	
-	public function getFencers()
+	public function getId()
 	{
-		$db = new Database();
-		$results = $db->query("SELECT `fencer_id` FROM `club_members` WHERE `club_id` = '" . $this->club_id . "';");
-
-		$club_fencers = array();
-		while ( $row = mysql_fetch_assoc($results) )
-		{
-			$fencer = new Fencer($row['id']);
-			array_push($club_fencers, array("name" => $fencer->getLink()));
-		}
-		return $club_fencers;
+		return $this->id;
+	}
+	
+	public function getUrl()
+	{
+		return $this->url;
+	}
+	
+	public function getLatitude()
+	{
+		return $this->latitude;
+	}
+	
+	public function getLongitude()
+	{
+		return $this->longitude;
+	}
+	
+	public function getStatus()
+	{
+		return $this->status;
+	}
+	
+	public function getFoundingDate()
+	{
+		return $this->founding_date;
+	}
+	
+	public function getAbsorbedInto()
+	{
+		return $this->absorbed_into;
+	}
+	
+	public function getImageId()
+	{
+		return $this->image_id;
+	}
+	
+	public function getImageUrl()
+	{
+		return $this->image_url;
 	}
 }
