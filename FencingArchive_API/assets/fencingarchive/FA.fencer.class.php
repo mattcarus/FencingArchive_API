@@ -47,8 +47,6 @@ class Fencer {
 			$this->forename = $row['forename'];
 			$this->nationality = $row['nationality'];
 			$this->name = $this->getName();
-
-//			$this->clubs = explode(',', $row['club_id']);
 			
 			if ( $row['image'] ) {
 				$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
@@ -99,6 +97,12 @@ class Fencer {
 			$this->isvalid = true;
 		}
 		
+		$clubs = $db->query("SELECT * FROM `club_members` LEFT JOIN clubs ON club_id=clubs.id WHERE `fencer_id`=$fid;");
+		
+		while ( $row = mysql_fetch_assoc($clubs) )
+		{
+			array_push($clubs, array('id' => $row['club_id'], 'name' => $row['name']));
+		}
 	}
 
 	public function getName() {
