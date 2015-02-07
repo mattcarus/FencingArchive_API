@@ -34,7 +34,9 @@ class Club {
 		$this->url = $row['url'];
 		$this->latitude = $row['latitude'];
 		$this->longitude = $row['longitude'];
-		list($this->status, $this->founding_date, $this->absorbed_into) = explode("|", $row['status']);
+		if ( sizeof(explode("|", $row['status'])) > 0 ) {
+			list($this->status, $this->founding_date, $this->absorbed_into) = explode("|", $row['status']);
+		}
 		$this->image_id = $row['image'];
 		$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
 		
