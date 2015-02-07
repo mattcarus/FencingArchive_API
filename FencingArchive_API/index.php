@@ -211,8 +211,19 @@ $app->get('/search/:term', function ($term) {
 	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
-
-
+// Retriev Images
+$app->get('/image/:id', function ($id) {
+    if(is_numeric($id) {
+        $db = new Database();
+        
+        // the result of the query
+        $result = $db->query("SELECT image FROM images WHERE id=$id");
+ 
+        // set the header for the image
+        header("Content-type: image/jpeg");
+        echo mysql_result($result, 0);
+    }
+});
 
 
 // POST route
