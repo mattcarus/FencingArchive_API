@@ -211,7 +211,7 @@ $app->get('/search/:term', function ($term) {
 	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
-// Retriev Images
+// Retrieve Image
 $app->get('/image/:id', function ($id) {
     if(is_numeric($id)) {
         $db = new Database();
@@ -227,13 +227,33 @@ $app->get('/image/:id', function ($id) {
 });
 
 
-// POST route
-$app->post(
-    '/post',
-    function () {
-        echo 'POST methods are not implemented';
+// POST routes
+// Save Image to DB
+$app->post('/image', function () use ($app) {
+/*
+ * We expect the POST request to be a json object like this:
+ * { 'url': 'http://example.com/image.jpg' }
+ */
+	
+	try {
+		// get and decode JSON request body
+		$request = $app->request();
+		$body = $request->getBody();
+		$input = json_decode($body);
+		
+		$imageData = file_get_contents( (string)$input->url );
+		$size = getimagesize( (string)$input->url );
+		
+		$db = new Database();
+		$db->query("INSERT INTO `images` (`mime`, `image`, `size`) VALUES ('" . $size['mime'] . "', '" . mysql_real_escape_string($imageData) . "', '" . $size[3] . "');");
+		
+		$app->response()->header('Content-Type', 'application/json');
+		echo "{'id':'" . mysql_insert_id() . "'";
     }
-);
+    catch  (Exception $e) {
+    	
+    }
+});
 
 // PUT route
 $app->put(
