@@ -34,7 +34,7 @@ class Club {
 		$this->url = $row['url'];
 		$this->latitude = $row['latitude'];
 		$this->longitude = $row['longitude'];
-		if ( sizeof(explode("|", $row['status'])) > 0 ) {
+		if ( sizeof(explode("|", $row['status'])) > 1 ) {
 			list($this->status, $this->founding_date, $this->absorbed_into) = explode("|", $row['status']);
 		}
 		$this->image_id = $row['image'];
