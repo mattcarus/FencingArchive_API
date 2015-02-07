@@ -220,7 +220,9 @@ $app->get('/image/:id', function ($id) {
         $result = $db->query("SELECT * FROM images WHERE id=$id");
         $row = mysql_fetch_assoc($result);
         // set the header for the image
-        header("Content-type: " . $row['mime']);
+        $response = $app->response();
+		$response->header('Content-Type', $row['mime']);
+		// header("Content-type: " . $row['mime']);
         echo $row['image'];
     }
 });
