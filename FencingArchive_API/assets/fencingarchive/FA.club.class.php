@@ -42,9 +42,9 @@ class Club {
 		
 		$members = $db->query("SELECT fencer_id FROM `club_members` LEFT JOIN fencers ON fencer_id=fencers.id WHERE `club_id`='$id'");
 		
-		while ( $row = mysql_fetch_assoc($results) )
+		while ( $row = mysql_fetch_assoc($members) )
 		{
-			array_push( $this->members, array('fid' => $row['fencer_id']) );
+			array_push( $this->members, new Fencer($row['fencer_id']) );
 		}
 	}
 	
