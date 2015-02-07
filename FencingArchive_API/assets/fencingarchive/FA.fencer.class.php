@@ -101,7 +101,7 @@ class Fencer {
 		
 		while ( $row = mysql_fetch_assoc($clubs) )
 		{
-			array_push($clubs, array('id' => $row['club_id'], 'name' => $row['name']));
+			array_push($this->clubs, array('id' => $row['club_id'], 'name' => $row['name']));
 		}
 	}
 
