@@ -218,7 +218,7 @@ $app->get('/image/:id', function ($id) {
         
         // the result of the query
         $result = $db->query("SELECT * FROM images WHERE id=$id");
-        $row = mysql_fetch_assoc($results);
+        $row = mysql_fetch_assoc($result);
         // set the header for the image
         header("Content-type: " . $row['mime']);
         echo mysql_result($row['image'], 0);
