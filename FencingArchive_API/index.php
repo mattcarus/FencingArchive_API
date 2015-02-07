@@ -248,7 +248,7 @@ $app->post('/image', function () use ($app) {
 		$db->query("INSERT INTO `images` (`mime`, `image`, `size`) VALUES ('" . $size['mime'] . "', '" . mysql_real_escape_string($imageData) . "', '" . $size[3] . "');");
 		
 		$app->response()->header('Content-Type', 'application/json');
-		echo "{'id':'" . mysql_insert_id() . "'";
+		echo "{'id':'" . mysql_insert_id() . "'"};
     }
     catch  (Exception $e) {
     	
