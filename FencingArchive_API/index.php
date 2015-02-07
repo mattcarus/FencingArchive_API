@@ -213,7 +213,7 @@ $app->get('/search/:term', function ($term) {
 
 // Retriev Images
 $app->get('/image/:id', function ($id) {
-    if(is_numeric($id) {
+    if(is_numeric($id)) {
         $db = new Database();
         
         // the result of the query
