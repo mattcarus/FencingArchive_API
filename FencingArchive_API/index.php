@@ -217,11 +217,11 @@ $app->get('/image/:id', function ($id) {
         $db = new Database();
         
         // the result of the query
-        $result = $db->query("SELECT image FROM images WHERE id=$id");
- 
+        $result = $db->query("SELECT * FROM images WHERE id=$id");
+        $row = mysql_fetch_assoc($results);
         // set the header for the image
-        header("Content-type: image/jpeg");
-        echo mysql_result($result, 0);
+        header("Content-type: " . $row['mime']);
+        echo mysql_result($row['image'], 0);
     }
 });
 
