@@ -15,6 +15,7 @@ class Club {
 	public $absorbed_into = '';
 	public $image_id = '';
 	public $image_url = '';
+	public $members = array();
 	
 	
 	function __construct($id)
@@ -36,6 +37,13 @@ class Club {
 		list($this->status, $this->founding_date, $this->absorbed_into) = explode("|", $row['status']);
 		$this->image_id = $row['image'];
 		$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
+		
+		$members = $db->query("SELECT fencer_id FROM `club_members` LEFT JOIN fencers ON fencer_id=fencers.id WHERE `club_id`='$id'");
+		
+		while ( $row = mysql_fetch_assoc($results) )
+		{
+			array_push($this->members, array('fid' => $row['fencer_id'], 'fencer' => new Fencer($row['fencer_id'])));
+		}
 	}
 	
 	public function getName()
