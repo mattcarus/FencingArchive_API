@@ -221,7 +221,7 @@ $app->get('/image/:id', function ($id) {
         $row = mysql_fetch_assoc($result);
         // set the header for the image
         header("Content-type: " . $row['mime']);
-        echo mysql_result($row['image'], 0);
+        echo $row['image'];
     }
 });
 
