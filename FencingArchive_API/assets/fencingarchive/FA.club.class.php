@@ -44,13 +44,7 @@ class Club {
 		
 		while ( $row = mysql_fetch_assoc($results) )
 		{
-			$fencer = new Fencer($row['fencer_id']);
-			array_push($this->members, array('fid' => $fencer->getId(),
-											 'name' => $fencer->getName(),
-											 'pofile_url' => $fencer->getProfileUrl(),
-											 'image_url' => $fencer->getImageUrl(),
-											 'link' => $fencer->getLink())
-					  );
+			array_push( $this->members, new Fencer($row['fencer_id']) );
 		}
 	}
 	
