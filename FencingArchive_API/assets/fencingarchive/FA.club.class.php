@@ -38,7 +38,7 @@ class Club {
 			list($this->status, $this->founding_date, $this->absorbed_into) = explode("|", $row['status']);
 		}
 		$this->image_id = $row['image'];
-		$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
+		$this->image_url = BASE_URL . "/image/" . $row['image'];
 		
 		$members = $db->query("SELECT fencer_id FROM `club_members` LEFT JOIN fencers ON fencer_id=fencers.id WHERE `club_id`='$id'");
 		
