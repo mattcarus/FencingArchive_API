@@ -55,7 +55,7 @@ class Bout {
 	function Bout($id)
 	{
 		$db = new Database();
-		$result = $db->query("SELECT id FROM bouts WHERE id=$id;");
+		$result = $db->query("SELECT * FROM bouts WHERE id=$id;");
 		
 		$row = mysql_fetch_assoc($result);
 		$this->winner = new Fencer($row['winner_id']);
