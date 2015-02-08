@@ -19,12 +19,12 @@ class Bouts {
 	
 	public function allFencerBouts($fid)
 	{
-		fencerBouts("WHERE winner_id=$fid OR loser_id=$fid");
+		$this->fencerBouts("WHERE winner_id=$fid OR loser_id=$fid");
 	}
 	
 	public function competitionFencerBouts($fid, $cid)
 	{
-		fencerBouts("WHERE (winner_id=$fid OR loser_id=$fid) AND cid=$cid");
+		$this->fencerBouts("WHERE (winner_id=$fid OR loser_id=$fid) AND cid=$cid");
 	}
 	
 	private function fencerBouts($whereClause)
