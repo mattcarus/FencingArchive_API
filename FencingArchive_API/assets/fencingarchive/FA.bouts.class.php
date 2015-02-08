@@ -7,12 +7,12 @@
 class Bouts {
 	public $bouts = array();
 	
-	function __construct($id)
+	function __construct()
 	{
 
 	}
 	
-	function Bouts($id)
+	function Bouts()
 	{
 
 	}
