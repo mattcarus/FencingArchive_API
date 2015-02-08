@@ -137,8 +137,8 @@ $app->get('/twitter/status', function () {
 	$twitter->setOAuthToken("265033050-vYBac2zOaoG7zNzJQcgPDe80Zs7zEOhVDvj6cmCc");
 	$twitter->setOAuthTokenSecret("XvlwWhraH53xIe7EMshBtJGWbltLdTZOEQvXnImUjyc");
 
-	header('Content-Type: text/plain');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	
 	echo $serialiser->generateValidXmlFromMixedObj($twitter->statusesUserTimeline('', 'backonthepiste', '', 10), 'twitter');
 });
@@ -149,8 +149,8 @@ $app->get('/twitter/status', function () {
 		$twitter->setOAuthToken("265033050-vYBac2zOaoG7zNzJQcgPDe80Zs7zEOhVDvj6cmCc");
 		$twitter->setOAuthTokenSecret("XvlwWhraH53xIe7EMshBtJGWbltLdTZOEQvXnImUjyc");
 	
-		header('Content-Type: text/plain');
-		header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	
 		echo $serialiser->generateValidXmlFromMixedObj($twitter->accountSettings(), 'twitter');
 });
@@ -160,8 +160,8 @@ $app->get('/fencer/:id', function ($id) {
 	$fencer = new Fencer($id);
 	if ($fencer->isvalid)
 	{
-		header('Content-Type: application/xml');
-		header('Access-Control-Allow-Origin: *');
+		$app->response()->header('Content-Type', 'application/xml');
+		$app->response()->header('Access-Control-Allow-Origin', '*');
 		echo $serialiser->generateValidXmlFromMixedObj($fencer);
 	}
 	else
@@ -174,24 +174,24 @@ $app->get('/competition/:id', function ($id) {
 	$serialiser = new XMLSerializer();
 	$competition = new Competition($id);
 	$competition->results = $competition->getResults();
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($competition);
 });
 
 $app->get('/club/:id', function ($id) {
 	$serialiser = new XMLSerializer();
 	$club = new Club($id);
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($club);
 });
 
 $app->get('/series/:id', function ($id) {
 	$serialiser = new XMLSerializer();
 	$series = new Series($id);
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($series);
 });
 
@@ -219,15 +219,15 @@ $app->get('/bouts/:fid/:cid', function ($fid, $cid) {
 $app->get('/query/:queryName/:options', function ($queryName, $options) {
 	$serialiser = new XMLSerializer();
 	$query = new AdHocQueries();
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($query->$queryName(0, $options), "object");
 });
 
 // Pass-through to Elastic Search
 $app->get('/search/:term', function ($term) {
-	header('Content-Type: application/json');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/json');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
