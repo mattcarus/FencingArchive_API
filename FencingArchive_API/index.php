@@ -225,9 +225,9 @@ $app->get('/query/:queryName/:options', function ($queryName, $options) use ($ap
 });
 
 // Pass-through to Elastic Search
-$app->get('/search/:term', function ($term) use ($app) {
-	$app->response()->header('Content-Type', 'application/json');
-	$app->response()->header('Access-Control-Allow-Origin', '*');
+$app->get('/search/:term', function ($term) {
+	header('Content-Type: application/json');
+	header('Access-Control-Allow-Origin: *');
 	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
