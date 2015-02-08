@@ -131,7 +131,7 @@ EOT;
 
 
 
-$app->get('/twitter/status', function () {
+$app->get('/twitter/status', function () use ($app) {
 	$serialiser = new XMLSerializer();
 	$twitter = new Twitter("w8sOTxiWV2IYOFY5kaWEfQ", "8YUymNAtNxPTXwU75TSrafkAfF70bdQ6Eo3kh7IJIXM");
 	$twitter->setOAuthToken("265033050-vYBac2zOaoG7zNzJQcgPDe80Zs7zEOhVDvj6cmCc");
@@ -143,7 +143,7 @@ $app->get('/twitter/status', function () {
 	echo $serialiser->generateValidXmlFromMixedObj($twitter->statusesUserTimeline('', 'backonthepiste', '', 10), 'twitter');
 });
 
-	$app->get('/twitter/profile', function () {
+	$app->get('/twitter/profile', function () use ($app) {
 		$serialiser = new XMLSerializer();
 		$twitter = new Twitter("w8sOTxiWV2IYOFY5kaWEfQ", "8YUymNAtNxPTXwU75TSrafkAfF70bdQ6Eo3kh7IJIXM");
 		$twitter->setOAuthToken("265033050-vYBac2zOaoG7zNzJQcgPDe80Zs7zEOhVDvj6cmCc");
@@ -155,7 +155,7 @@ $app->get('/twitter/status', function () {
 		echo $serialiser->generateValidXmlFromMixedObj($twitter->accountSettings(), 'twitter');
 });
 	
-$app->get('/fencer/:id', function ($id) {
+$app->get('/fencer/:id', function ($id) use ($app) {
 	$serialiser = new XMLSerializer();
 	$fencer = new Fencer($id);
 	if ($fencer->isvalid)
@@ -170,7 +170,7 @@ $app->get('/fencer/:id', function ($id) {
 	}
 });
 	
-$app->get('/competition/:id', function ($id) {
+$app->get('/competition/:id', function ($id) use ($app) {
 	$serialiser = new XMLSerializer();
 	$competition = new Competition($id);
 	$competition->results = $competition->getResults();
@@ -179,7 +179,7 @@ $app->get('/competition/:id', function ($id) {
 	echo $serialiser->generateValidXmlFromMixedObj($competition);
 });
 
-$app->get('/club/:id', function ($id) {
+$app->get('/club/:id', function ($id) use ($app) {
 	$serialiser = new XMLSerializer();
 	$club = new Club($id);
 	$app->response()->header('Content-Type', 'application/xml');
@@ -187,7 +187,7 @@ $app->get('/club/:id', function ($id) {
 	echo $serialiser->generateValidXmlFromMixedObj($club);
 });
 
-$app->get('/series/:id', function ($id) {
+$app->get('/series/:id', function ($id) use ($app) {
 	$serialiser = new XMLSerializer();
 	$series = new Series($id);
 	$app->response()->header('Content-Type', 'application/xml');
@@ -206,7 +206,7 @@ $app->get('/bouts/:fid', function ($fid) use ($app) {
 });
 
 // Get list of bouts for a fencer at a particular competition
-$app->get('/bouts/:fid/:cid', function ($fid, $cid) {
+$app->get('/bouts/:fid/:cid', function ($fid, $cid) use ($app) {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
 	$bouts->competitionFencerBouts($fid, $cid);
@@ -216,7 +216,7 @@ $app->get('/bouts/:fid/:cid', function ($fid, $cid) {
 });
 
 // This is for running a pre-canned query
-$app->get('/query/:queryName/:options', function ($queryName, $options) {
+$app->get('/query/:queryName/:options', function ($queryName, $options) use ($app) {
 	$serialiser = new XMLSerializer();
 	$query = new AdHocQueries();
 	$app->response()->header('Content-Type', 'application/xml');
@@ -225,14 +225,14 @@ $app->get('/query/:queryName/:options', function ($queryName, $options) {
 });
 
 // Pass-through to Elastic Search
-$app->get('/search/:term', function ($term) {
+$app->get('/search/:term', function ($term) use ($app) {
 	$app->response()->header('Content-Type', 'application/json');
 	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo file_get_contents("http://api.fencingarchive.net:9200/_search?q=$term");
 });
 
 // Retrieve Image
-$app->get('/image/:id', function ($id) {
+$app->get('/image/:id', function ($id) use ($app) {
     if(is_numeric($id)) {
         $db = new Database();
         
