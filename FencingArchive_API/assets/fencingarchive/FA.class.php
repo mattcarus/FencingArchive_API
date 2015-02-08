@@ -12,6 +12,7 @@ require_once('FA.competition.class.php');
 require_once('FA.database.class.php');
 require_once('FA.fencer.class.php');
 require_once('FA.series.class.php');
+require_once('FA.bouts.class.php');
 require_once('FA.utils.class.php');
 
 ?>
