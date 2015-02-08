@@ -49,9 +49,9 @@ class Fencer {
 			$this->name = $this->getName();
 			
 			if ( $row['image'] ) {
-				$this->image_url = "http://fencingarchive.net/image.php?image_id=" . $row['image'];
+				$this->image_url = API_URL . "/image/" . $row['image'];
 			} else {
-				$this->image_url = "http://fencingarchive.net/image.php?image_id=1";
+				$this->image_url = API_URL . "/image/1";
 			}	
 			$this->profile_url = BASE_URL . "/fencer/" . $fid;
 			$this->banner_url = BASE_URL . "/forum_banner.php?id=$fid";
