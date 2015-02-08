@@ -199,7 +199,7 @@ $app->get('/series/:id', function ($id) {
 $app->get('/bouts/:fid', function ($fid) {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
-	$bouts->allFencerBouts($id);
+	$bouts->allFencerBouts($fid);
 	header('Content-Type: application/xml');
 	header('Access-Control-Allow-Origin: *');
 	echo $serialiser->generateValidXmlFromMixedObj($bouts);
