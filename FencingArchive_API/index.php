@@ -196,7 +196,7 @@ $app->get('/series/:id', function ($id) {
 });
 
 // Get list of bouts for a fencer
-$app->get('/bouts/:fid', function ($fid) use $app {
+$app->get('/bouts/:fid', function ($fid) use ($app) {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
 	$bouts->allFencerBouts($fid);
