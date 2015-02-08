@@ -200,8 +200,8 @@ $app->get('/bouts/:fid', function ($fid) use ($app) {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
 	$bouts->allFencerBouts($fid);
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($bouts);
 });
 
