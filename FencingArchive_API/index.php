@@ -196,7 +196,7 @@ $app->get('/series/:id', function ($id) {
 });
 
 // Get list of bouts for a fencer
-$app->get('/bouts/:fid', function ($fid) {
+$app->get('/bouts/:fid', function ($fid) use $app {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
 	$bouts->allFencerBouts($fid);
@@ -210,12 +210,10 @@ $app->get('/bouts/:fid/:cid', function ($fid, $cid) {
 	$serialiser = new XMLSerializer();
 	$bouts = new Bouts();
 	$bouts->competitionFencerBouts($fid, $cid);
-	header('Content-Type: application/xml');
-	header('Access-Control-Allow-Origin: *');
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($bouts);
 });
-
-
 
 // This is for running a pre-canned query
 $app->get('/query/:queryName/:options', function ($queryName, $options) {
