@@ -12,6 +12,7 @@ class Competition {
 	public $tag_url = '';
 	public $results = array();
 	public $date = '';
+	public $url = '';
 	
 	function __construct($cid)
 	{
@@ -30,6 +31,8 @@ class Competition {
 		$this->date = $row['date'];
 		
 		$this->full_name = $this->getName();
+		
+		$this->url = BASE_URL . "/competition/" . $cid;
 	}
 	
 	public function getName()
