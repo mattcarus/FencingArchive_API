@@ -73,11 +73,13 @@ class Fencer {
 			$this->medals['bronze'] = $row['medals'];
 			
 			// Populate results array
+/*
 			$results = $db->query("SELECT * FROM `fencers_results.v` WHERE `fid`=$fid ORDER BY `date` DESC;");
 			while ( $row = mysql_fetch_assoc($results) )
 			{
 				array_push($this->results, array('position' => $row['position'], 'competition' => new Competition($row['cid'])));
 			}
+*/
 /*			
 			// Populate bouts array
 			$results = $db->query("SELECT * FROM `fencers_bouts.v` WHERE `winner_id`=$fid OR `loser_id`=$fid;");
