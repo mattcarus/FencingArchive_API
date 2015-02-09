@@ -72,14 +72,6 @@ class Fencer {
 			$row = mysql_fetch_assoc($db->query("SELECT COUNT(cid) as medals FROM `results` WHERE fid=$fid AND position=3;"));
 			$this->medals['bronze'] = $row['medals'];
 			
-			// Populate results array
-/*
-			$results = $db->query("SELECT * FROM `fencers_results.v` WHERE `fid`=$fid ORDER BY `date` DESC;");
-			while ( $row = mysql_fetch_assoc($results) )
-			{
-				array_push($this->results, array('position' => $row['position'], 'competition' => new Competition($row['cid'])));
-			}
-*/
 /*			
 			// Populate bouts array
 			$results = $db->query("SELECT * FROM `fencers_bouts.v` WHERE `winner_id`=$fid OR `loser_id`=$fid;");
@@ -211,5 +203,17 @@ class Fencer {
 			array_push($orderedRankings, array('position' => $ranking['position'], 'name' => $ranking['series']->getLink(), 'date' => $ranking['series']->getDate()));
 		}
 		return $orderedRankings;
+	}
+	
+	public function populateResults()
+	{
+		$db = new Database();
+		// Populate results array
+		$results = $db->query("SELECT * FROM `fencers_results.v` WHERE `fid`=" . $this->fid . " ORDER BY `date` DESC;");
+		while ( $row = mysql_fetch_assoc($results) )
+		{
+			array_push($this->results, array('position' => $row['position'], 'competition' => new Competition($row['cid'])));
+		}
+		
 	}
 }

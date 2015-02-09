@@ -170,6 +170,22 @@ $app->get('/fencer/:id', function ($id) use ($app) {
 	}
 });
 	
+$app->get('/fencer/:id/results', function ($id) use ($app) {
+	$serialiser = new XMLSerializer();
+	$fencer = new Fencer($id);
+	$fencer->populateResults();
+	if ($fencer->isvalid)
+	{
+		$app->response()->header('Content-Type', 'application/xml');
+		$app->response()->header('Access-Control-Allow-Origin', '*');
+		echo $serialiser->generateValidXmlFromMixedObj($fencer);
+	}
+	else
+	{
+		header("HTTP/1.0 404 Not Found");
+	}
+});
+	
 $app->get('/competition/:id', function ($id) use ($app) {
 	$serialiser = new XMLSerializer();
 	$competition = new Competition($id);
