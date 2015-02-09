@@ -25,19 +25,19 @@ class Rankings {
 		
 		$db = new Database();
 		
-		//$db->query("SET @rank=0;");
-		$results = $db->query("SELECT id, totalPoints FROM $viewName;");
+		$db->query("SET @rank=0;");
+		$results = $db->query("SELECT @rank:=@rank+1 AS rank,id, totalPoints FROM $viewName;");
 		
 		$this->category = $category;
 		$this->weapon = $weapon;
 		
 		while ( $row = mysql_fetch_assoc($results) )
 		{
-			array_push($this->rankings, array('totalPoints' => $row['totalPoints'], 'fencer' => $row['id']));
+			array_push($this->rankings, array('rank' => $row['rank'], 'totalPoints' => $row['totalPoints'], 'fencer' => $row['id']));
 		}
 		
-		// @rank:=@rank+1 AS rank, 
-		// 'rank' => $row['rank'], 
+		//  
+		//  
 	}
 
 }
