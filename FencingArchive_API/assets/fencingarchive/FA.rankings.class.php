@@ -33,7 +33,7 @@ class Rankings {
 		
 		while ( $row = mysql_fetch_assoc($results) )
 		{
-			array_push($this->rankings, array('totalPoints' => $row['totalPoints'], 'fencer' => new Fencer($row['id'])));
+			array_push($this->rankings, array('totalPoints' => $row['totalPoints'], 'fencer' => $row['id']));
 		}
 		
 		// @rank:=@rank+1 AS rank, 
