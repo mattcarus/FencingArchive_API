@@ -9,24 +9,29 @@ class Rankings {
 	public $weapon = '';
 	public $rankings = array();
 	
-	function __construct($category, $weapon)
+	function __construct($category, $weapon, $topn)
 	{
-		$this->getRankings($category, $weapon);
+		$this->getRankings($category, $weapon, $topn);
 	}
 	
-	function Rankings($category, $weapon)
+	function Rankings($category, $weapon, $topn)
 	{
-		$this->getRankings($category, $weapon);
+		$this->getRankings($category, $weapon, $topn);
 	}
 	
-	public function getRankings($category, $weapon)
+	public function getRankings($category, $weapon, $topn)
 	{
 		$viewName = "`rankings_$category.v`";
+		
+		if ( $topn > 0 )
+		{
+			$limit = " LIMIT 0, $topn";
+		}
 		
 		$db = new Database();
 		
 		$db->query("SET @rank=0;");
-		$results = $db->query("SELECT @rank:=@rank+1 AS rank,id, totalPoints FROM $viewName;");
+		$results = $db->query("SELECT @rank:=@rank+1 AS rank,id, totalPoints FROM $viewName $limit;");
 		
 		$this->category = $category;
 		$this->weapon = $weapon;
@@ -35,9 +40,5 @@ class Rankings {
 		{
 			array_push($this->rankings, array('rank' => $row['rank'], 'totalPoints' => $row['totalPoints'], 'fencer' => $row['id']));
 		}
-		
-		//  
-		//  
 	}
-
 }

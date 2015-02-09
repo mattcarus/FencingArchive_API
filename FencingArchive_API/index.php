@@ -231,10 +231,19 @@ $app->get('/bouts/:fid/:cid', function ($fid, $cid) use ($app) {
 	echo $serialiser->generateValidXmlFromMixedObj($bouts);
 });
 
-// Get FencingArchive Rankings for a categord/weapon
+// Get FencingArchive Rankings for a category/weapon
 $app->get('/rankings/:category/:weapon', function ($category, $weapon) use ($app) {
 	$serialiser = new XMLSerializer();
-	$rankings = new Rankings($category, $weapon);
+	$rankings = new Rankings($category, $weapon, 0);
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
+	echo $serialiser->generateValidXmlFromMixedObj($rankings);
+});
+
+// Get FencingArchive Rankings for top n fencers from a category/weapon
+$app->get('/rankings/:category/:weapon/:topn', function ($category, $weapon, $topn) use ($app) {
+	$serialiser = new XMLSerializer();
+	$rankings = new Rankings($category, $weapon, $topn);
 	$app->response()->header('Content-Type', 'application/xml');
 	$app->response()->header('Access-Control-Allow-Origin', '*');
 	echo $serialiser->generateValidXmlFromMixedObj($rankings);
