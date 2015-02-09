@@ -25,8 +25,8 @@ class Rankings {
 		
 		$db = new Database();
 		
-		$db->query("SET @rank=0;");
-		$results = $db->query("SELECT @rank:=@rank+1 AS rank, id, totalPoints FROM $viewName;");
+		//$db->query("SET @rank=0;");
+		$results = $db->query("SELECT id, totalPoints FROM $viewName;");
 		
 		$this->category = $category;
 		$this->weapon = $weapon;
