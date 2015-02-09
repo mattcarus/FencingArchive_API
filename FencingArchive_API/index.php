@@ -215,6 +215,15 @@ $app->get('/bouts/:fid/:cid', function ($fid, $cid) use ($app) {
 	echo $serialiser->generateValidXmlFromMixedObj($bouts);
 });
 
+// Get FencingArchive Rankings for a categord/weapon
+$app->get('/rankings/:category/:weapon', function ($category, $weapon) use ($app) {
+	$serialiser = new XMLSerializer();
+	$rankings = new Rankings($category, $weapon);
+	$app->response()->header('Content-Type', 'application/xml');
+	$app->response()->header('Access-Control-Allow-Origin', '*');
+	echo $serialiser->generateValidXmlFromMixedObj($rankings);
+});
+
 // This is for running a pre-canned query
 $app->get('/query/:queryName/:options', function ($queryName, $options) use ($app) {
 	$serialiser = new XMLSerializer();
