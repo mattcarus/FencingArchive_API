@@ -23,10 +23,13 @@ class Rankings {
 	{
 		$viewName = "`rankings_$category.v`";
 		
+		$limit = "";
+		
 		if ( $topn > 0 )
 		{
 			$limit = " LIMIT 0, $topn";
 		}
+		
 		
 		$db = new Database();
 		
