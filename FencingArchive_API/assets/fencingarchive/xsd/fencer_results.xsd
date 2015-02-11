@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="fencer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:short" name="fid"/>
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="surname"/>
+        <xs:element type="xs:string" name="forename"/>
+        <xs:element name="clubs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="node" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="id"/>
+                    <xs:element type="xs:string" name="name"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="weapon"/>
+        <xs:element type="xs:anyURI" name="image_url"/>
+        <xs:element type="xs:anyURI" name="profile_url"/>
+        <xs:element type="xs:anyURI" name="banner_url"/>
+        <xs:element type="xs:anyURI" name="tag_url"/>
+        <xs:element type="xs:string" name="nationality"/>
+        <xs:element name="medals">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="gold"/>
+              <xs:element type="xs:byte" name="silver"/>
+              <xs:element type="xs:byte" name="bronze"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="results">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="node" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="position"/>
+                    <xs:element name="competition">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:short" name="cid"/>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="full_name"/>
+                          <xs:element type="xs:string" name="weapon"/>
+                          <xs:element type="xs:string" name="tag_url"/>
+                          <xs:element type="xs:string" name="results"/>
+                          <xs:element type="xs:date" name="date"/>
+                          <xs:element type="xs:anyURI" name="url"/>
+                          <xs:element type="xs:string" name="category"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="rankings"/>
+        <xs:element type="xs:string" name="bouts"/>
+        <xs:element name="popularity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="node" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:byte" name="isvalid"/>
+        <xs:element type="xs:float" name="elo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

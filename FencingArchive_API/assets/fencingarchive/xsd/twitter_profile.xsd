@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="twitter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="time_zone">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element type="xs:byte" name="utc_offset"/>
+              <xs:element type="xs:string" name="tzinfo_name"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="protected"/>
+        <xs:element type="xs:string" name="screen_name"/>
+        <xs:element type="xs:byte" name="always_use_https"/>
+        <xs:element type="xs:byte" name="use_cookie_personalization"/>
+        <xs:element name="sleep_time">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="enabled"/>
+              <xs:element type="xs:string" name="end_time"/>
+              <xs:element type="xs:string" name="start_time"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="geo_enabled"/>
+        <xs:element type="xs:string" name="language"/>
+        <xs:element type="xs:string" name="discoverable_by_email"/>
+        <xs:element type="xs:string" name="discoverable_by_mobile_phone"/>
+        <xs:element type="xs:byte" name="display_sensitive_media"/>
+        <xs:element name="trend_location">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="node">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="countryCode"/>
+                    <xs:element type="xs:anyURI" name="url"/>
+                    <xs:element type="xs:int" name="woeid"/>
+                    <xs:element name="placeType">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:byte" name="code"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="parentid"/>
+                    <xs:element type="xs:string" name="country"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
