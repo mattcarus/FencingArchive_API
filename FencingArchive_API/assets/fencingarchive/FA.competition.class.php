@@ -95,7 +95,7 @@ class Competition {
 			while ( $row = mysql_fetch_assoc($sqlResults) )
 			{
 				$fencer = new Fencer($row['fid']);
-				array_push($this->results, array('position' => $row['position'], 'fid' => $row['fid'], 'fencer_name' => $fencer->name, 'fencer' => new Fencer($row['fid'])));
+				array_push($this->results, array('position' => $row['position'], 'fencer' => new Fencer($row['fid'])));
 			}
 			
 			return $this->results;
