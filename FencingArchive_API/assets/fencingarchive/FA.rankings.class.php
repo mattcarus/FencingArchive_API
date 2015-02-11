@@ -7,6 +7,7 @@
 class Rankings {
 	public $category = '';
 	public $weapon = '';
+	public $name = '';
 	public $rankings = array();
 	
 	function __construct($category, $weapon, $topn)
@@ -30,7 +31,6 @@ class Rankings {
 			$limit = " LIMIT 0, $topn";
 		}
 		
-		
 		$db = new Database();
 		
 		$db->query("SET @rank=0;");
@@ -38,6 +38,30 @@ class Rankings {
 		
 		$this->category = $category;
 		$this->weapon = $weapon;
+		switch ( $weapon )
+		{
+			case "ME":
+				$this->name = ucfirst($category) . " Men's Epee";
+				break;
+			case "MF":
+				$this->name = ucfirst($category) . " Men's Foil";
+				break;
+			case "MS":
+				$this->name = ucfirst($category) . " Men's Sabre";
+				break;
+			case "WE":
+				$this->name = ucfirst($category) . " Women's Epee";
+				break;
+			case "WF":
+				$this->name = ucfirst($category) . " Women's Foil";
+				break;
+			case "WS":
+				$this->name = ucfirst($category) . " Women's Sabre";
+				break;
+										
+		}
+		 
+		
 		
 		while ( $row = mysql_fetch_assoc($results) )
 		{
