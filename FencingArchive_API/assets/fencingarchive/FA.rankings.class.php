@@ -60,13 +60,23 @@ class Rankings {
 				break;
 										
 		}
-		 
-		
 		
 		while ( $row = mysql_fetch_assoc($results) )
 		{
 			$fencer = new Fencer($row['id']);
 			array_push($this->rankings, array('rank' => $row['rank'], 'totalPoints' => $row['totalPoints'], 'fencer' => $fencer));
+		}
+	}
+	
+	public function getFencersRanking($fid)
+	{
+		foreach ( $this->rankings as $ranking )
+		{
+			if ( $ranking->fencer->fid == $fid )
+			{
+				return $ranking->rank;
+			}
+			return False;
 		}
 	}
 }

@@ -89,6 +89,24 @@ class Fencer {
 */			
 			// Mark the object as valid
 			$this->isvalid = true;
+			
+			$ranking = new Rankings('senior', 'ME', 0);
+			$this->rankings['ME'] = $ranking->getFencersRanking($this->fid);
+			
+			$ranking = new Rankings('senior', 'MF', 0);
+			$this->rankings['MF'] = $ranking->getFencersRanking($this->fid);
+			
+			$ranking = new Rankings('senior', 'MS', 0);
+			$this->rankings['MS'] = $ranking->getFencersRanking($this->fid);
+			
+			$ranking = new Rankings('senior', 'WE', 0);
+			$this->rankings['WE'] = $ranking->getFencersRanking($this->fid);
+			
+			$ranking = new Rankings('senior', 'WF', 0);
+			$this->rankings['WF'] = $ranking->getFencersRanking($this->fid);
+			
+			$ranking = new Rankings('senior', 'WS', 0);
+			$this->rankings['WS'] = $ranking->getFencersRanking($this->fid);
 		}
 		
 		$clubs = $db->query("SELECT * FROM `club_members` LEFT JOIN clubs ON club_id=clubs.id WHERE `fencer_id`=$fid;");
